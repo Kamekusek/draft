@@ -35,10 +35,6 @@
       border-radius: 10px;
     }
 
-    button:hover{
-        background-color: white;
-        color: black;
-    }
 
     canvas {
       position: fixed;
@@ -55,6 +51,9 @@
   <div id="cards">
     <div class="card" id="formacja">Formacja: ?</div>
     <div class="card" id="kraje">Kraje: ?, ?</div>
+  </div>
+  <div id="cards">
+    <div class="card">Ilość losowań: <span id="counter">0</span>/3</div>
   </div>
 
   <button onclick="startLosowanie(false)">Losuj</button>
@@ -94,11 +93,13 @@
     const formacjaDiv = document.getElementById("formacja");
     const krajeDiv = document.getElementById("kraje");
     const clickSound = document.getElementById("click-sound");
+    let losowania = 0;
+
 
     function losujZListy(lista) {
       return lista[Math.floor(Math.random() * lista.length)];
     }
-
+    
     function startLosowanie(cheat = false) {
       const f = cheat ? formacjeCheat : formacje;
       const k = cheat ? krajeCheat : kraje;
@@ -106,7 +107,7 @@
       let steps = 25;
       let delay = 50;
       let current = 0;
-
+      losowania++;
       document.body.style.backgroundColor = "#111";
 
       function animujLosowanie() {
@@ -120,6 +121,8 @@
 
         formacjaDiv.innerHTML = `Formacja:<br><strong>${losFormacja}</strong>`;
         krajeDiv.innerHTML = `Kraje:<br><strong>${k[i1]}</strong>, <strong>${k[i2]}</strong>`;
+        document.getElementById("counter").textContent = losowania;
+
 
         
         clickSound.currentTime = 0;
@@ -157,4 +160,3 @@
 
 </body>
 </html>
-
