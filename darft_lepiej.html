@@ -59,12 +59,12 @@
 
   <button onclick="startLosowanie(false)">Losuj</button>
 
-  <!-- Dźwięk kliknięcia -->
+
   <audio id="click-sound" src="click.mp3" preload="auto"></audio>
   <audio id="confetti-sound" src="confetti-pop-sound.mp3" preload="auto"></audio>
 
 
-  <!-- Konfetti -->
+ 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
@@ -107,7 +107,7 @@
       let delay = 50;
       let current = 0;
 
-      document.body.style.backgroundColor = "#111"; // reset tła
+      document.body.style.backgroundColor = "#111";
 
       function animujLosowanie() {
         const losFormacja = losujZListy(f);
@@ -121,18 +121,18 @@
         formacjaDiv.innerHTML = `Formacja:<br><strong>${losFormacja}</strong>`;
         krajeDiv.innerHTML = `Kraje:<br><strong>${k[i1]}</strong>, <strong>${k[i2]}</strong>`;
 
-        // Odtwarzaj dźwięk
+        
         clickSound.currentTime = 0;
         clickSound.play();
 
         current++;
         if (current < steps) {
           setTimeout(animujLosowanie, delay);
-          delay += 50; // zwalnia
+          delay += 50;
         } else {
-          // Po zakończeniu
-          document.body.style.backgroundColor = "#0a420a"; // zielone tło
-          // Konfetti 🎉
+        
+          document.body.style.backgroundColor = "#0a420a";
+          
           confetti({
             particleCount: 400,
             spread: 200,
@@ -157,3 +157,4 @@
 
 </body>
 </html>
+
